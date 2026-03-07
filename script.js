@@ -1,4 +1,4 @@
-const signBtn = document.getElementById('sign-btn').addEventListener('click', function(e){
+const signBtn = document.getElementById('sign-btn').addEventListener('click', function(){
     // e.preventDefault()
     const userNameInput = document.getElementById('user-name')
     const userInput = userNameInput.value; 
