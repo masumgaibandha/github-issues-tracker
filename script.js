@@ -7,9 +7,11 @@ const signBtn = document.getElementById('sign-btn').addEventListener('click', fu
     const password = passwordInput.value; 
     if(userInput === "admin" && password === "admin123"){
         alert('Logged In successful')
+        window.location.assign("./home.html")
     }
     else{
         alert("Input valid credential");
         return
     }
 })
+
