@@ -28,7 +28,6 @@ closedBtn.onclick = function(){
     totalCounts(allIssues);
     setActiveBtn(allBtn)
  }
-
  openBtn.onclick = function () {
   const openIssues = allIssues.filter(
     issue => issue.status.toLowerCase() === "open"
@@ -38,7 +37,6 @@ closedBtn.onclick = function(){
   setActiveBtn(openBtn)
 };
   
- 
  function totalCounts(issues){
     issuesCount.innerText = issues.length; 
  }
@@ -50,7 +48,6 @@ allIssuesCard.innerHTML = ""
  function hideLoading(){
 loadingSpinner.classList.add('hidden')
  }
-
  
 
 async function loadAllIssue() {
@@ -67,7 +64,6 @@ async function loadAllIssue() {
     
        
     }
-
 
     const displayAllIssues = (issues) =>{  
  
@@ -87,7 +83,7 @@ async function loadAllIssue() {
                   ${issue.priority}
                 </button>
               </div>
-              <h2 onClick="my_modal_5.showModal()" class="card-title cursor-pointer">${issue.title}</h2>
+              <h2 onClick="loadIssuesDetails(${issue.id})" class="card-title cursor-pointer">${issue.title}</h2>
               <p class="text-color">
                 ${issue.description}
               </p>
@@ -115,17 +111,99 @@ async function loadAllIssue() {
 
 
  }
+ // const loadIssuesDetails = async(id) =>{
+//     const url = `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`;
+ 
+//     const res = await fetch(url)
+//     const details = await res.json()
+//     displayIssuesDetails(details.data)
+// }
+async function loadIssuesDetails(id) {
+    const url = `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`;
+    const res = await fetch(url)
+    const details = await res.json()
+    displayIssuesDetails(details.data)
+    console.log(details.data)
+}
+// {
+//     "status": "success",
+//     "message": "Issue fetched successfully",
+//     "data": {
+//         "id": 2,
+//         "title": "Add dark mode support",
+//         "description": "Users are requesting a dark mode option. This would improve accessibility and user experience.",
+//         "status": "open",
+//         "labels": [
+//             "enhancement",
+//             "good first issue"
+//         ],
+//         "priority": "medium",
+//         "author": "sarah_dev",
+//         "assignee": "",
+//         "createdAt": "2024-01-14T14:20:00Z",
+//         "updatedAt": "2024-01-16T09:15:00Z"
+//     }
+// }
 
-     
+const displayIssuesDetails = (item) => {
+    // modalContainer.innerHTML = ""
+   console.log(item)
+    const modalContainer = document.getElementById('modal-container')
+    modalContainer.innerHTML = `
+    <h3 class="text-lg font-bold">Fix broken image uploads</h3>
+              <div class="text-color py-3">
+                <button
+                  class="btn outline-none bg-[#00A96E] text-white rounded-[100px] w-20 h-8 p-2 px-5"
+                >
+                  ${item.status}
+                </button>
+                <span class="px-3">Opened by ${item.author}</span>
+                <span>${item.createdAt}</span>
+              </div>
+
+              <div class="py-3 rounded-[100px] p-2">
+                ${createElements(item.labels)}
+              </div>
+
+              <div>
+                <p class="py-4 text-color">
+                  ${item.description}
+                </p>
+              </div>
+
+              <div class="flex space-y-3">
+                <div class="">
+                  <p class="text-color py-2">Assignee: </p>
+                  <p>${item.assignee? item.assignee: "Blank"}</p>
+                </div>
+                <div class="ml-24">
+                  <p class="py-2">Priority:</p>
+                  <button
+                    class="btn bg-[#EF4444] text-[#FFFFFF] rounded-[100px] p-2 px-6">
+                    ${item.priority}
+                   
+                  </button>
+                </div>
+              </div>
+
+              <div class="modal-action">
+                <form method="dialog">
+                  <!-- if there is a button in form, it will close the modal -->
+                  <button
+                    class="btn bg-[#4A00FF] text-white py-5 px-4 rounded-xl"
+                  >
+                    Close
+                  </button>
+                </form>
+              </div>
+    `
+    document.getElementById('my_modal_5').showModal()
+
+    
+}
 
 loadAllIssue()
 setActiveBtn(allBtn)
-
-
-// const createElements = (arr) => {
-//   const htmlElements = arr.map((el) => `<span class="btn">${el}</span>`);
-//   return htmlElements.join(" ");
-// };
 
 const createElements = (arr) =>{
     const htmlElements = arr.map((el)=>{
@@ -145,4 +223,10 @@ const createElements = (arr) =>{
     })
     return htmlElements
 }
+
+
+
+
+
+
 
