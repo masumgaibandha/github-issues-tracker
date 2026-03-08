@@ -78,7 +78,7 @@ const displayAllIssues = (issues) => {
               <div class="flex justify-between items-center">
                 <div>
                 
-                <button class=""> <img src="${issue.status === "closed" ? "./assets/closed-status.png" : "./assets/open-status.png"}" alt="status" /></button>
+                <button class=""> <img src="${issue.status === "closed" ? "./assets/closed-status.png" : "./assets/open.png"}" alt="status" /></button>
 
                 </div>
 
