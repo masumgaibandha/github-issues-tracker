@@ -111,13 +111,7 @@ async function loadAllIssue() {
 
 
  }
- // const loadIssuesDetails = async(id) =>{
-//     const url = `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`;
- 
-//     const res = await fetch(url)
-//     const details = await res.json()
-//     displayIssuesDetails(details.data)
-// }
+
 async function loadIssuesDetails(id) {
     const url = `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`;
     const res = await fetch(url)
@@ -125,25 +119,7 @@ async function loadIssuesDetails(id) {
     displayIssuesDetails(details.data)
     console.log(details.data)
 }
-// {
-//     "status": "success",
-//     "message": "Issue fetched successfully",
-//     "data": {
-//         "id": 2,
-//         "title": "Add dark mode support",
-//         "description": "Users are requesting a dark mode option. This would improve accessibility and user experience.",
-//         "status": "open",
-//         "labels": [
-//             "enhancement",
-//             "good first issue"
-//         ],
-//         "priority": "medium",
-//         "author": "sarah_dev",
-//         "assignee": "",
-//         "createdAt": "2024-01-14T14:20:00Z",
-//         "updatedAt": "2024-01-16T09:15:00Z"
-//     }
-// }
+
 
 const displayIssuesDetails = (item) => {
     // modalContainer.innerHTML = ""
@@ -224,6 +200,19 @@ const createElements = (arr) =>{
     return htmlElements
 }
 
+document.getElementById('issue-btn').addEventListener('click', function(){
+    const input = document.getElementById('search-input')
+    const searchText = input.value.trim().toLowerCase(); 
+    
+    fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchText}`)
+    .then(res => res.json())
+    .then(data =>{
+        const allTexts = (data.data)
+        const FilterTexts = allTexts.filter(text=>text.title.toLowerCase().includes(searchText))
+        displayAllIssues(FilterTexts)
+    })
+    
+})
 
 
 
