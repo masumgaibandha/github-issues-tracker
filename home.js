@@ -87,7 +87,7 @@ async function loadAllIssue() {
                   ${issue.priority}
                 </button>
               </div>
-              <h2 class="card-title">${issue.title}</h2>
+              <h2 onClick="my_modal_5.showModal()" class="card-title cursor-pointer">${issue.title}</h2>
               <p class="text-color">
                 ${issue.description}
               </p>
