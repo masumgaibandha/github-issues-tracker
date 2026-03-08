@@ -70,28 +70,28 @@
       </nav>
 
       <section class="w-11/12 mx-auto py-10">
+
         <div id="issue-btn" class="bg-base-100 border-2 border-gray-100 shadow-md px-5 py-10">
-          <button id="all-btn" class="btn bg-[#4A00FF] text-white px-14">
+          <button id="all-btn"  class="btn btn-outline text-[#64748B] px-14">
             All
           </button>
-          <button id="open-btn" class="btn btn-outline text-[#64748B] px-14">
+          <button id="open-btn"  class="btn btn-outline text-[#64748B] px-14">
             Open
           </button>
-          <button id="closed-btn" class="btn btn-outline text-[#64748B] px-14">
+          <button id="closed-btn"  class="btn btn-outline text-[#64748B] px-14">
             Closed
           </button>
         </div>
+             
 
-        <div
-          class="bg-base-100 border-2 border-gray-100 shadow-md px-5 py-10 mt-3 flex justify-between items-center"
-        >
+        <div class="bg-base-100 border-2 border-gray-100 shadow-md px-5 py-10 mt-3 flex justify-between items-center">
           <div class="flex gap-5 items-center">
             <div class="bg-[#ECE4FF] p-3 rounded-full">
               <img src="assets/Aperture.png" alt="" />
             </div>
 
             <div id="issue-number">
-              <span class="text-xl font-semibold">0</span>
+              <span id="issues-count" class="text-xl font-semibold">0</span>
               <p>Track and manage your project issues</p>
             </div>
           </div>
@@ -101,12 +101,11 @@
             <p><img src="assets/elipe.png" alt="" class="inline" /> Closed</p>
           </div>
         </div>
-
+        
+       
+<!-- Issue Container -->
         <div id="issues-card" class="pt-10 grid grid-cols-4 gap-3">
             <!-- Card -->
-          
-
-
 
           <div class="card bg-base-100 shadow-2xl ">
             <div class="card-body">
@@ -144,9 +143,14 @@
               <div>1/15/2024</div>
             </div>
           </div>
-
+           
 
         </div>
+       <!-- Loading spinner -->
+            <div id="loading-spinner" class="h-[30vh] hidden flex justify-center items-center">
+            <span class="loading loading-dots loading-xl"></span>
+         </div>
+         
       </section>
     </header>
 
