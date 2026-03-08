@@ -1,13 +1,3 @@
-// let allBtn = document.getElementById('all-btn');
-// let openBtn = document.getElementById('open-btn');
-// let closedBtn = document.getElementById('open-btn');
-
-// allBtn.onclick = () => selectedIssue('all-btn')
-// console.log(first)
-
-// document.getElementById("all-btn").onclick = function () {
-//   console.log('button clicked')
-// };
  let allIssues = []
  const allIssuesCard = document.getElementById('issues-card')
  const loadingSpinner = document.getElementById('loading-spinner')
@@ -107,8 +97,15 @@ async function loadAllIssue() {
             </div>
             <hr class="text-gray-400" />
             <div class="card-body text-color">
-              <div>${issue.author}</div>
-              <div>${issue.createdAt}</div>
+              <div class="flex justify-between items-center">
+              <span># ${issue.id} ${issue.author}</span>
+              <span>${issue.createdAt}</span>
+              </div>
+
+              <div class="flex justify-between items-center">
+              <span>assignee: ${issue.assignee? issue.assignee : "Blank"}</span>
+              <span>${issue.updatedAt}</span>
+              </div>
             </div>
           </div>
           `
@@ -125,11 +122,27 @@ loadAllIssue()
 setActiveBtn(allBtn)
 
 
-const createElements = (arr) => {
-  const htmlElements = arr.map((el) => `<span class="btn">${el}</span>`);
-  return htmlElements.join(" ");
-};
+// const createElements = (arr) => {
+//   const htmlElements = arr.map((el) => `<span class="btn">${el}</span>`);
+//   return htmlElements.join(" ");
+// };
 
+const createElements = (arr) =>{
+    const htmlElements = arr.map((el)=>{
+        if(el.toLowerCase()==="bug"){
+            return `<span class="btn bg-[#feecec] text-[#EF4444] rounded-[100px] p-2 px-3">${el}</span>`
+        }
+        else if(el.toLowerCase()==="help wanted"){
+            return `<span class="btn bg-[#fff8db] text-[#D97706] rounded-[100px] p-2 px-3">${el}</span>`
+        }
+        else if(el.toLowerCase()==="enhancement"){
+            return `<span class="btn bg-[#defce8] text-[#00A96E] rounded-[100px] p-2 px-3">${el}</span>`
+        }
+        
+        else{
+             return `<span class="btn bg-[#d2f3c4] text-[#d94906] rounded-[100px] p-2 px-3">${el}</span>`;
+        }
+    })
+    return htmlElements
+}
 
-
-    
