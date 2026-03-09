@@ -88,7 +88,7 @@ const displayAllIssues = (issues) => {
                   issue.priority.toLowerCase() === "medium"
                     ? "bg-[#fff6d1] text-[#F59E0B]"
                     : issue.priority.toLowerCase() === "high"
-                      ? "bg-[#EF4444] text-[#FFFFFF]"
+                      ? "bg-[#FEECEC] text-[#EF4444]"
                       : issue.priority.toLowerCase() === "low"
                         ? "bg-[#EEEFF2] "
                         : ""
