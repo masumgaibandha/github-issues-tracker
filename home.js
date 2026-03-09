@@ -221,7 +221,7 @@ const createElements = (arr) => {
       return `<span class="btn bg-[#d2f3c4] text-[#d94906] rounded-[100px] p-2 px-3">${el}</span>`;
     }
   });
-  return htmlElements;
+  return htmlElements.join(" ");
 };
 
 document.getElementById("issue-btn").addEventListener("click", function () {
