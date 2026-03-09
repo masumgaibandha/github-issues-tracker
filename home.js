@@ -69,7 +69,7 @@ const displayAllIssues = (issues) => {
     // console.log(issue)
     const issueCard = document.createElement("div");
     issueCard.innerHTML = `
-          <div class="card bg-base-100 shadow-2xl border-t-4 
+          <div onClick="loadIssuesDetails(${issue.id})" class="cursor-pointer card bg-base-100 shadow-2xl border-t-4 
 
           ${issue.status.toLowerCase() === "open" ? "border-t-[#00A96E]" : "border-t-[#A855F7]"}  
           
@@ -98,7 +98,7 @@ const displayAllIssues = (issues) => {
                   ${issue.priority}
                 </button>
               </div>
-              <h2 onClick="loadIssuesDetails(${issue.id})" class="card-title cursor-pointer">${issue.title}</h2>
+              <h2  class="card-title cursor-pointer">${issue.title}</h2>
               <p class="text-color">
                 ${issue.description}
               </p>
