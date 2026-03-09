@@ -157,7 +157,7 @@ const displayIssuesDetails = (item) => {
                 <span>${item.createdAt.split("T")[0]}</span>
               </div>
 
-              <div class="py-3 rounded-[100px] p-2">
+              <div class="py-3 rounded-3xl px-6 ">
                 ${createElements(item.labels)}
               </div>
 
